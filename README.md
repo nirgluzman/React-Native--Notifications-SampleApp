@@ -20,3 +20,8 @@ https://docs.expo.dev/versions/latest/sdk/notifications/
 
 - A library that provides an API to fetch push notification tokens and to present, schedule, receive
   and respond to notifications.
+
+- Local Notifications with `scheduleNotificationAsync()
+  https://docs.expo.dev/versions/latest/sdk/notifications/#schedulenotificationasyncrequest
+
+  https://www.udemy.com/course/react-native-the-practical-guide/learn/lecture/31510260#questions/8567716
