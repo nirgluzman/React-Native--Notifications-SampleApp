@@ -46,9 +46,7 @@ export default function App() {
         // assign given notification channel to a notification channel group.
         Notifications.setNotificationChannelAsync('default', {
           name: 'default',
-          importance: Notifications.AndroidImportance.DEFAULT,
-          vibrationPattern: [0, 250, 250, 250],
-          lightColor: '#FF231F7C'
+          importance: Notifications.AndroidImportance.DEFAULT
         });
       }
     }
@@ -100,10 +98,27 @@ export default function App() {
     });
   }
 
+  function sendPushNotificationHandler() {
+    // send a push notification to the device using Expo's Push API, https://docs.expo.dev/push-notifications/sending-notifications/#http2-api
+    const url = 'https://exp.host/--/api/v2/push/send';
+    fetch(url, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        to: 'ExponentPushToken[zDZ0wBBgQnKCq28jYMGQpc]',
+        title: 'Test - sent from a device!',
+        body: 'This is a test!'
+      })
+    });
+  }
+
   return (
     <View style={styles.container}>
       <StatusBar style='auto' />
       <Button title='Schedule Notification' onPress={scheduledNotificationHandler} />
+      <Button title='Send Push Notification' onPress={sendPushNotificationHandler} />
     </View>
   );
 }
