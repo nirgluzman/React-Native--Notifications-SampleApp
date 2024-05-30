@@ -1,3 +1,5 @@
+import { useEffect } from 'react';
+
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Button, View } from 'react-native';
 
@@ -13,6 +15,29 @@ Notifications.setNotificationHandler({
 });
 
 export default function App() {
+  // register an event listner to user tapping on notifications.
+  useEffect(() => {
+    // Listeners registered by this method will be called whenever a notification is received while the app is running.
+    const subscriptionReceivedListener = Notifications.addNotificationReceivedListener(
+      notification => {
+        console.log('NOTIFICATION RECEIVED', notification);
+      }
+    );
+
+    // Listeners registered by this method will be called whenever a user interacts with a notification.
+    const subscriptionResponseReceivedListener =
+      Notifications.addNotificationResponseReceivedListener(response => {
+        console.log('NOTIFICATION RESPONSE RECEIVED', response);
+        const userName = response.notification.request.content.data.userName;
+        console.log(userName);
+      });
+
+    return () => {
+      subscriptionReceivedListener.remove();
+      subscriptionResponseReceivedListener.remove();
+    };
+  }, []);
+
   async function scheduledNotificationHandler() {
     // schedule a notification to be triggered in the future.
     await Notifications.scheduleNotificationAsync({
@@ -21,8 +46,8 @@ export default function App() {
         title: 'My first local notification!',
         body: 'This is the body of the notification!',
         data: {
-          // Data associated with the notification, not displayed.
-          data: 'This is some data!'
+          // data associated with the notification, not displayed.
+          userName: 'Nir'
         }
       },
       trigger: {
