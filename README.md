@@ -37,3 +37,8 @@ https://docs.expo.dev/push-notifications/overview/
 
 - `getExpoPushTokenAsync()` - returns an Expo token that can be used to send a push notification to
   the device using Expo's push notifications service.
+
+- Send notifications with Expo's Push API,
+  https://docs.expo.dev/push-notifications/sending-notifications/
+
+- Push notifications tool, https://expo.dev/notifications
