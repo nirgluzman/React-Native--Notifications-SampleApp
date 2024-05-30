@@ -21,7 +21,19 @@ https://docs.expo.dev/versions/latest/sdk/notifications/
 - A library that provides an API to fetch push notification tokens and to present, schedule, receive
   and respond to notifications.
 
-- Local Notifications with `scheduleNotificationAsync()
-  https://docs.expo.dev/versions/latest/sdk/notifications/#schedulenotificationasyncrequest
+### Local Notifications with `scheduleNotificationAsync()`
 
-  https://www.udemy.com/course/react-native-the-practical-guide/learn/lecture/31510260#questions/8567716
+https://docs.expo.dev/versions/latest/sdk/notifications/#schedulenotificationasyncrequest
+
+https://www.udemy.com/course/react-native-the-practical-guide/learn/lecture/31510260#questions/8567716
+
+### Push Notifications
+
+https://docs.expo.dev/push-notifications/overview/
+
+- Setup, https://docs.expo.dev/push-notifications/push-notifications-setup/
+
+- `PushToken` - string which is unique for every physical device = device's address
+
+- `getExpoPushTokenAsync()` - returns an Expo token that can be used to send a push notification to
+  the device using Expo's push notifications service.
